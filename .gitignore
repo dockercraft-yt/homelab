@@ -31,7 +31,7 @@ package-lock.json
 # Optional: .env-Dateien, wenn du keine Secrets tracken willst
 .env
 .env.*
-**/.env*
+**/.env
 
 # ===================================
 # Python
