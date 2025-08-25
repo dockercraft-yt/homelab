@@ -1,0 +1,17 @@
+version: "3"
+services:
+  pinchflat:
+    image: ghcr.io/kieraneglin/pinchflat:latest
+    environment:
+      # Set the timezone to your local timezone
+      - TZ=Europe/Berlin
+      - UID=1000
+      - GID=1000
+    ports:
+      - 8945:8945
+    volumes:
+      - ./config:/config
+      - /mnt/dockge/pinchflat/downloads:/downloads
+#      - ./downloads:/downloads
+    restart: unless-stopped
+networks: {}

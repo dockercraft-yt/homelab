@@ -1,0 +1,11 @@
+services:
+  PSU:
+    container_name: PSU
+    image: ironmansoftware/universal:latest
+    ports:
+      - 5000:5000
+    restart: unless-stopped
+    environment:
+      - TZ=Europe/Berlin
+    volumes:
+      - ./PSU:/root

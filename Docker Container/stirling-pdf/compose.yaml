@@ -1,0 +1,28 @@
+services:
+  stirling-pdf:
+    image: stirlingtools/stirling-pdf:latest
+    ports:
+      - 8081:8080
+    volumes:
+      - ./StirlingPDF/trainingData:/usr/share/tessdata # Required for extra OCR languages
+      - ./StirlingPDF/extraConfigs:/configs
+      - ./StirlingPDF/customFiles:/customFiles/
+      - ./StirlingPDF/logs:/logs/
+      - ./StirlingPDF/pipeline:/pipeline/
+    environment:
+      - DOCKER_ENABLE_SECURITY=false
+      - LANGS=de_DE
+      - SECURITY_CUSTOMGLOBALAPIKEY=346d2b42-7a7d-405b-98ba-3fa8abfc5751
+      #- DOCKER_ENABLE_SECURITY=true
+      #- SECURITY_ENABLE_LOGIN=true
+      #- SECURITY_OAUTH2_ENABLED=true
+      #- SECURITY_OAUTH2_AUTOCREATEUSER=false
+      #- SECURITY_OAUTH2_ISSUER=${OAUTH2_ISSUER}
+      #- SECURITY_OAUTH2_CLIENTID=${OAUTH2_CLIENTID}
+      #- SECURITY_OAUTH2_CLIENTSECRET=${OAUTH2_CLIENTSECRET}
+      #- SECURITY_OAUTH2_BLOCKREGISTRATION=false
+      #- SECURITY_OAUTH2_SCOPES="openid, profile, email"
+      #- SECURITY_OAUTH2_USEASUSERNAME=email
+      #- SECURITY_OAUTH2_PROVIDER=${OAUTH2_PROVIDER}
+    restart: unless-stopped      
+networks: {}

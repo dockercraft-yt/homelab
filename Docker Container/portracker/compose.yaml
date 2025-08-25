@@ -1,0 +1,19 @@
+services:
+  portracker:
+    image: mostafawahied/portracker:latest
+    container_name: portracker
+    restart: unless-stopped
+    network_mode: host
+    volumes:
+      # Required for data persistence
+      - ./portracker-data:/data
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    environment:
+      - DATABASE_PATH=/data/portracker.db
+      - PORT=4999
+      # Optional: For enhanced TrueNAS features
+      # - TRUENAS_API_KEY=your-api-key-here
+networks: {}
+x-dockge:
+  urls:
+    - http://192.168.178.128:4999

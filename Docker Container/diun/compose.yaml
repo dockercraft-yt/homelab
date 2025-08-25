@@ -1,0 +1,43 @@
+services:
+  diun:
+    image: crazymax/diun:latest
+    container_name: diun
+    hostname: diun
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./data:/data
+    environment:
+      - DIUN_NOTIF_MAIL_HOST=${EMAIL_Server}
+      - DIUN_NOTIF_MAIL_PORT=465
+      - DIUN_NOTIF_MAIL_USERNAME=${EMAIL_Address}
+      - DIUN_NOTIF_MAIL_PASSWORD=${EMAIL_Password}
+      - DIUN_NOTIF_MAIL_FROM=${EMAIL_Address}
+      - DIUN_NOTIF_MAIL_TO=${EMAIL_Address_Receiver}
+      - DIUN_PROVIDERS_DOCKER_WATCHBYDEFAULT=true
+      - DIUN_PROVIDERS_DOCKER=true
+      - DIUN_WATCH_JITTER=30s
+      - DIUN_WATCH_SCHEDULE=0 10 0 15 * *
+      - DIUN_WATCH_WORKERS=20
+      - DIUN_NOTIF_MAIL_SSL=true
+      - TZ=Europe/Berlin
+      - DIUN_NOTIF_MAIL_TEMPLATETITLE={{ .Entry.Image }} {{ if (eq .Entry.Status
+        "new") }}ist verfügbar{{ else }}wurde aktualisiert{{ end }}
+      - >
+        DIUN_NOTIF_MAIL_TEMPLATEBODY=
+
+        Docker tag {{ if .Entry.Image.HubLink }}[**{{ .Entry.Image }}**]({{ .Entry.Image.HubLink }}){{ else }}**{{ .Entry.Image }}**{{ end }}, 
+
+        das Du bei _{{ .Entry.Provider }}_ abonniert hast {{ if (eq .Entry.Status "new") }}ist verfügbar{{ else }}wurde aktualisiert{{ end }}
+
+        in der **{{ .Entry.Image.Domain }}** registry (ausgelöst von _{{ escapeMarkdown .Meta.Hostname }}_ Host).
+
+
+        Dieses Image wurde am <code>{{ .Entry.Manifest.Created.Format "Jan 02, 2006 15:04:05 UTC" }}</code>
+
+        mit Digest <code>{{ .Entry.Manifest.Digest }}</code>
+
+        für die <code>{{ .Entry.Manifest.Platform }}</code> Plattform {{ if (eq .Entry.Status "new") }}erzeugt{{ else }}aktualisiert{{ end }}
+    labels:
+      - diun.enable=true
+    restart: always
+networks: {}
