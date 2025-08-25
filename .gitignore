@@ -30,6 +30,7 @@ package-lock.json
 
 # Optional: .env-Dateien, wenn du keine Secrets tracken willst
 .env
+.envtemplate
 **/.env
 
 # ===================================
