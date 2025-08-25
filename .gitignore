@@ -1,0 +1,144 @@
+# ===================================
+# Betriebssystem-Spezifisch
+# ===================================
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+*.swp
+*.swo
+*~
+
+# ===================================
+# Node.js
+# ===================================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+package-lock.json
+.pnpm-debug.log
+
+# Optional: .env-Dateien, wenn du keine Secrets tracken willst
+.env
+.env.*
+**/.env*
+
+# ===================================
+# Python
+# ===================================
+__pycache__/
+*.py[cod]
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+pip-log.txt
+pip-delete-this-directory.txt
+
+# ===================================
+# Java
+# ===================================
+*.class
+*.jar
+*.war
+*.ear
+target/
+out/
+
+# ===================================
+# C/C++
+# ===================================
+*.o
+*.obj
+*.exe
+*.out
+*.dll
+*.log
+*.idb
+*.pdb
+*.ilk
+
+# ===================================
+# Visual Studio / Rider / JetBrains IDEs
+# ===================================
+.vscode/
+.idea/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.VC.db
+
+# ===================================
+# Logs
+# ===================================
+*.log
+logs/
+log/
+
+# ===================================
+# Tests / Coverage
+# ===================================
+coverage/
+*.lcov
+.nyc_output/
+
+# ===================================
+# Git
+# ===================================
+*.orig
+*.rej
+*.bak
+*.tmp
+*.swp
+*.swo
+*.merge_backup
+*.un~
+
+# ===================================
+# Compression Files
+# ===================================
+*.zip
+*.tar.gz
+*.rar
+*.7z
+
+# ===================================
+# Other Common
+# ===================================
+*.bak
+*.tmp
+*.temp
+*.old
+*.orig
+
+# ===================================
+# Editor-spezifisch
+# ===================================
+# VSCode
+.vscode/
+
+# IntelliJ / WebStorm / PhpStorm / Android Studio
+.idea/
+*.iml
+
+# Sublime
+*.sublime-workspace
+*.sublime-project
+
+# ===================================
+# Projekt-Spezifisch – Hier kannst du eigene Regeln ergänzen
+# ===================================
+# /my-sensitive-folder/
+# secrets.json
