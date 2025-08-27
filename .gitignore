@@ -142,3 +142,9 @@ coverage/
 # ===================================
 # /my-sensitive-folder/
 # secrets.json
+
+# ===================================
+# This and That Files which should not be Synced
+# ===================================
+# Example Files
+.README.MD.EXAMPLE

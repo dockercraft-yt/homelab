@@ -14,6 +14,3 @@ services:
       # Optional: For enhanced TrueNAS features
       # - TRUENAS_API_KEY=your-api-key-here
 networks: {}
-x-dockge:
-  urls:
-    - http://192.168.178.128:4999

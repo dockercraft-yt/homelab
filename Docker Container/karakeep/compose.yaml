@@ -9,16 +9,18 @@ services:
       - ./data:/data
     ports:
       - 3000:3000
-    env_file:
-      - .env
     environment:
       MEILI_ADDR: http://meilisearch:7700
       BROWSER_WEB_URL: http://chrome:9222
-      # OPENAI_API_KEY: ...
-
-      # You almost never want to change the value of the DATA_DIR variable.
-      # If you want to mount a custom directory, change the volume mapping above instead.
-      DATA_DIR: /data # DON'T CHANGE THIS
+      DATA_DIR=${DATA_DIR}
+      MEILI_MASTER_KEY=${MEILI_MASTER_KEY}
+      NEXTAUTH_URL=${NEXTAUTH_URL}
+      NEXTAUTH_SECRET=S${NEXTAUTH_SECRET}
+      OLLAMA_BASE_URL=${OLLAMA_BASE_URL}
+      INFERENCE_TEXT_MODEL=${INFERENCE_TEXT_MODEL}
+      INFERENCE_IMAGE_MODE=${INFERENCE_IMAGE_MODE}
+      DISABLE_SIGNUPS=${DISABLE_SIGNUPS}
+      OCR_LANGS=${OCR_LANGS}
   chrome:
     image: gcr.io/zenika-hub/alpine-chrome:123
     restart: unless-stopped
