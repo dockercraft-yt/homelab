@@ -1,0 +1,27 @@
+services:
+    rac:
+        container_name: authentik-RAC
+        networks:
+            - proxynet
+        deploy:
+            resources:
+                limits:
+                    pids: 2048
+        environment:
+            - TZ=Europe/Berlin
+            - HOST_OS=Unraid
+            - HOST_HOSTNAME=Tower
+            - HOST_CONTAINERNAME=authentik-RAC
+            - AUTHENTIK_HOST'='https://auth.muehlendick.xyz/
+            - AUTHENTIK_INSECURE'='false
+            - AUTHENTIK_TOKEN'='clZxf93InIM3zxCEHwKohyTQzHCOAS79tT43clmyeXmEc6olFXUZ8E8egT3u
+        labels:
+            - net.unraid.docker.managed=dockerman
+        ports:
+            - 9002:9000/tcp
+            - 9445:9443/tcp
+        image: ghcr.io/goauthentik/rac:2025.4.2
+networks:
+    proxynet:
+        external: true
+        name: proxynet

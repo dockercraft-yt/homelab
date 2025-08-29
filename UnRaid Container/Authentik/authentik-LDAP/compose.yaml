@@ -1,0 +1,29 @@
+services:
+    ldap:
+        container_name: authentik-LDAP
+        networks:
+            - proxynet
+        deploy:
+            resources:
+                limits:
+                    pids: 2048
+        environment:
+            - TZ=Europe/Berlin
+            - HOST_OS=Unraid
+            - HOST_HOSTNAME=Tower
+            - HOST_CONTAINERNAME=authentik-LDAP
+            - AUTHENTIK_HOST'='https://auth.homelab.muehlendick.xyz
+            - AUTHENTIK_INSECURE'='false
+            - AUTHENTIK_TOKEN'='tQ8nVXwYiTd0q8geLYkEbqe3Y9FwG2lBjc6giRZil8ph9r7Lt36SkjJOLsBZ
+        labels:
+            - net.unraid.docker.managed=dockerman
+            - net.unraid.docker.icon='https://github.com/MacVille/docker-images/blob/main/images/authentik_ldap.png?raw=true'
+        ports:
+            - 3899:389/tcp
+        dns:
+            - 192.168.178.3
+        image: ghcr.io/goauthentik/ldap:2025.4.2
+networks:
+    proxynet:
+        external: true
+        name: proxynet

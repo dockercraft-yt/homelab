@@ -1,0 +1,30 @@
+services:
+    proxy:
+        container_name: authentik-Proxy
+        networks:
+            - proxynet
+        deploy:
+            resources:
+                limits:
+                    pids: 2048
+        environment:
+            - TZ=Europe/Berlin
+            - HOST_OS=Unraid
+            - HOST_HOSTNAME=Tower
+            - HOST_CONTAINERNAME=authentik-Proxy
+            - AUTHENTIK_HOST'='https://auth.homelab.muehlendick.xyz/
+            - AUTHENTIK_INSECURE'='false
+            - AUTHENTIK_TOKEN'='A8XyKgLeiKjwghso2xyAkaNxgYntEfFEOuRfUR4QOozCjzprgjwTFrYWC5pI
+        labels:
+            - net.unraid.docker.managed=dockerman
+            - net.unraid.docker.icon='https://raw.githubusercontent.com/MacVille/docker-images/refs/heads/main/images/authentik_proxy.png'
+        ports:
+            - 9001:9000/tcp
+            - 9444:9443/tcp
+        dns:
+            - 192.168.178.3
+        image: ghcr.io/goauthentik/proxy:2025.4.2
+networks:
+    proxynet:
+        external: true
+        name: proxynet

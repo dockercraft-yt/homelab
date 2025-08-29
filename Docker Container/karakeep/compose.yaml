@@ -10,8 +10,8 @@ services:
     ports:
       - 3000:3000
     environment:
-      MEILI_ADDR: http://meilisearch:7700
-      BROWSER_WEB_URL: http://chrome:9222
+      MEILI_ADDR= http://meilisearch:7700
+      BROWSER_WEB_URL= http://chrome:9222
       DATA_DIR=${DATA_DIR}
       MEILI_MASTER_KEY=${MEILI_MASTER_KEY}
       NEXTAUTH_URL=${NEXTAUTH_URL}
