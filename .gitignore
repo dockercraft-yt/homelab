@@ -148,3 +148,4 @@ coverage/
 # ===================================
 # Example Files
 .README.MD.EXAMPLE
+**/.ps1
